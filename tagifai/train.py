@@ -75,7 +75,7 @@ class Trainer:
         y_trues, y_probs = [], []
 
         # Iterate over val batches
-        with torch.no_grad():
+        with torch.inference_mode():
             for i, batch in enumerate(dataloader):
 
                 # Step
@@ -109,7 +109,7 @@ class Trainer:
         y_trues, y_probs = [], []
 
         # Iterate over batches
-        with torch.no_grad():
+        with torch.inference_mode():
             for i, batch in enumerate(dataloader):
 
                 # Forward pass w/ inputs

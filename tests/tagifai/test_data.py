@@ -14,7 +14,7 @@ from app import config
 from tagifai import data, main, utils
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def tags():
     # Load tags
     tags_url = "https://raw.githubusercontent.com/GokuMohandas/MadeWithML/main/datasets/tags.json"
@@ -23,7 +23,7 @@ def tags():
     return tags
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def df():
     # Load features
     params_fp = Path(config.CONFIG_DIR, "params.json")

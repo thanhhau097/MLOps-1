@@ -69,6 +69,7 @@ def compute_features(
 
 @app.command()
 def get_historical_features():
+    """Retrieve historical features for training."""
     # Entities to pull data for (should dynamically read this from somewhere)
     project_ids = [1, 2, 3]
     now = datetime.now()
@@ -223,6 +224,7 @@ def params(
     tag: str = "workspace",
     verbose: bool = True,
 ):
+    """Configured parametes for a specific release TAG."""
     if tag == "workspace":
         params = utils.load_dict(filepath=Path(config.MODEL_DIR, "params.json"))
     else:  # pragma: no cover, project specific condition
@@ -240,6 +242,7 @@ def performance(
     tag: str = "workspace",
     verbose: bool = True,
 ):
+    """Performance for a given release TAG in the project repo."""
     if tag == "workspace":
         performance = utils.load_dict(filepath=Path(config.MODEL_DIR, "performance.json"))
     else:  # pragma: no cover, project specific condition
@@ -257,6 +260,7 @@ def diff(
     tag_a: str = "workspace",
     tag_b: str = "",
 ):  # pragma: no cover, can't be certain what diffs will exist
+    """Difference between two release TAGs."""
     # Tag b
     if tag_b == "":
         tags_url = f"https://api.github.com/repos/{author}/{repo}/tags"
